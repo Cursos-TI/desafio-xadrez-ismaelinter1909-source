@@ -3,41 +3,44 @@
 int main() {
 
     // ==========================================================
-    // DESAFIO SUPER TRUNFO - XADREZ
-    // NÍVEL NOVATO
+    // DESAFIO DE XADREZ - NÍVEL AVENTUREIRO
     // ==========================================================
-    // Objetivo:
-    // Simular o movimento de três peças de xadrez utilizando
-    // diferentes estruturas de repetição.
+    // Neste nível mantemos os movimentos das peças do desafio
+    // anterior e adicionamos o movimento do Cavalo.
     //
     // Torre  -> for
     // Bispo  -> while
     // Rainha -> do-while
+    // Cavalo -> loops aninhados (for + while)
     // ==========================================================
 
 
     // ==========================================================
-    // DEFINIÇÃO DOS MOVIMENTOS
+    // DEFINIÇÃO DA QUANTIDADE DE CASAS
     // ==========================================================
-    // A quantidade de casas de cada peça é definida diretamente
-    // no código, conforme solicitado pelo desafio.
+    // Os valores são definidos diretamente no código,
+    // conforme solicitado pelo desafio.
     // ==========================================================
 
     int casasTorre = 5;
     int casasBispo = 5;
     int casasRainha = 8;
 
-    // Variável utilizada para controlar as repetições.
+    // Movimento do Cavalo:
+    // duas casas para baixo e uma para a esquerda.
+    int casasBaixoCavalo = 2;
+    int casasEsquerdaCavalo = 1;
+
+    // Variáveis utilizadas para controlar os loops.
     int contador;
+    int contadorCavalo;
 
 
     // ==========================================================
-    // MOVIMENTO DA TORRE
+    // MOVIMENTO DA TORRE - FOR
     // ==========================================================
-    // A Torre deve se movimentar 5 casas para a direita.
-    //
-    // Para este movimento utilizamos a estrutura FOR.
-    // A cada repetição representa uma casa percorrida.
+    // A Torre deve movimentar 5 casas para a direita.
+    // Cada repetição do FOR representa uma casa percorrida.
     // ==========================================================
 
     printf("====================================\n");
@@ -51,59 +54,107 @@ int main() {
 
 
     // ==========================================================
-    // MOVIMENTO DO BISPO
+    // MOVIMENTO DO BISPO - WHILE
     // ==========================================================
-    // O Bispo deve se movimentar 5 casas na diagonal
-    // para cima e para a direita.
+    // O Bispo deve movimentar 5 casas na diagonal para cima
+    // e para a direita.
     //
-    // Para este movimento utilizamos a estrutura WHILE.
-    //
-    // Como o movimento é diagonal, são apresentadas duas
-    // direções em cada casa percorrida: Cima e Direita.
+    // Por ser um movimento diagonal, imprimimos as duas
+    // direções em cada repetição.
     // ==========================================================
 
     printf("\n====================================\n");
     printf("         MOVIMENTO DO BISPO\n");
     printf("====================================\n");
 
-    // Reinicia o contador antes de começar o próximo movimento.
     contador = 0;
 
     while (contador < casasBispo) {
 
         printf("Cima Direita\n");
 
-        // Incrementa o contador após cada casa percorrida.
         contador++;
     }
 
 
     // ==========================================================
-    // MOVIMENTO DA RAINHA
+    // MOVIMENTO DA RAINHA - DO-WHILE
     // ==========================================================
-    // A Rainha deve se movimentar 8 casas para a esquerda.
+    // A Rainha deve movimentar 8 casas para a esquerda.
     //
-    // Para este movimento utilizamos a estrutura DO-WHILE.
-    //
-    // Diferente do while, o do-while executa primeiro o bloco
-    // de código e depois verifica a condição.
+    // No DO-WHILE o comando é executado antes da verificação
+    // da condição de repetição.
     // ==========================================================
 
     printf("\n====================================\n");
     printf("         MOVIMENTO DA RAINHA\n");
     printf("====================================\n");
 
-    // Reinicia novamente o contador.
     contador = 0;
 
     do {
 
         printf("Esquerda\n");
 
-        // Incrementa o contador após cada movimento.
         contador++;
 
     } while (contador < casasRainha);
+
+
+    // ==========================================================
+    // MOVIMENTO DO CAVALO - LOOPS ANINHADOS
+    // ==========================================================
+    // O Cavalo possui um movimento diferente das outras peças.
+    // Ele se movimenta formando a letra "L".
+    //
+    // Neste desafio o movimento solicitado é:
+    //
+    // 2 casas para baixo
+    // 1 casa para a esquerda
+    //
+    // Resultado esperado:
+    //
+    // Baixo
+    // Baixo
+    // Esquerda
+    //
+    // Para atender ao requisito do desafio utilizamos dois
+    // loops aninhados:
+    //
+    // Loop externo -> FOR
+    // Loop interno -> WHILE
+    // ==========================================================
+
+    printf("\n====================================\n");
+    printf("         MOVIMENTO DO CAVALO\n");
+    printf("====================================\n");
+
+
+    // O FOR controla o movimento de duas casas para baixo.
+    for (contador = 0; contador < casasBaixoCavalo; contador++) {
+
+        printf("Baixo\n");
+
+
+        // ======================================================
+        // LOOP INTERNO
+        // ======================================================
+        // O movimento para a esquerda deve acontecer somente
+        // depois que as duas casas para baixo forem percorridas.
+        // ======================================================
+
+        if (contador == casasBaixoCavalo - 1) {
+
+            contadorCavalo = 0;
+
+            while (contadorCavalo < casasEsquerdaCavalo) {
+
+                printf("Esquerda\n");
+
+                contadorCavalo++;
+            }
+        }
+    }
 
 
     // ==========================================================
